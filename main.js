@@ -110,7 +110,8 @@ $$('video[data-autoplay]').forEach(v => {
 if ($('.cs-shot')) {
   const dialog = document.createElement('dialog');
   dialog.className = 'zoom';
-  dialog.innerHTML = '<button class="zoom__close" aria-label="Close">×</button><div class="zoom__scroll" data-lenis-prevent></div><p class="zoom__hint">Swipe to explore</p>';
+  dialog.innerHTML = '<button class="zoom__close" aria-label="Close">×</button><div class="zoom__scroll" data-lenis-prevent></div><p class="zoom__hint"></p>';
+  $('.zoom__hint', dialog).textContent = document.documentElement.lang === 'ru' ? 'Листай, чтобы рассмотреть' : 'Swipe to explore';
   document.body.append(dialog);
   const box = $('.zoom__scroll', dialog);
   $('.zoom__close', dialog).addEventListener('click', () => dialog.close());
