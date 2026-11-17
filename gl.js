@@ -69,7 +69,7 @@
   // Cap the buffer at ~900px wide: on large screens a fixed 0.5 scale still means millions of shader runs per frame.
   let SCALE = 0.5;
   function resize() {
-    SCALE = Math.min(0.5, 900 / innerWidth);
+    SCALE = Math.min(0.5, 720 / innerWidth);
     canvas.width = Math.max(1, Math.round(innerWidth * SCALE));
     canvas.height = Math.max(1, Math.round(innerHeight * SCALE));
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -98,9 +98,11 @@
     gl.uniform1f(uScroll, scroll);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
+  // The shader moves slowly, so 30fps looks the same and halves GPU work.
+  let lastDraw = 0;
   function frame(now) {
     if (!running) return;
-    draw(now);
+    if (now - lastDraw >= 32) { draw(now); lastDraw = now; }
     if (!reduce) requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

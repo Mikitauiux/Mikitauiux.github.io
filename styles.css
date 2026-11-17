@@ -46,7 +46,7 @@ ul, ol { list-style: none; }
 
 /* ---------- Cursor ---------- */
 .cursor {
-  position: fixed; left: 0; top: 0; z-index: 90;
+  position: fixed; left: 0; top: 0; z-index: 200; opacity: 0;
   width: 14px; height: 14px; margin: -7px 0 0 -7px;
   border-radius: 50%; background: var(--fg);
   pointer-events: none; box-shadow: 0 0 0 1px rgba(0,0,0,.25);
@@ -58,6 +58,10 @@ ul, ol { list-style: none; }
 .cursor__label { font-size: 13px; font-weight: 700; color: #000; opacity: 0; transition: opacity .2s; }
 .cursor.is-label .cursor__label { opacity: 1; }
 @media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor { display: none; } }
+/* Custom cursor replaces the system one; main.js sets the class only when the custom cursor is active */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+html.has-cursor .zoom, html.has-cursor .zoom * { cursor: auto !important; }
+.cursor.is-visible { opacity: 1; }
 
 /* ---------- WebGL ---------- */
 #gl {
@@ -92,7 +96,7 @@ ul, ol { list-style: none; }
 section { position: relative; padding: clamp(80px, 14vh, 160px) var(--gutter); }
 .line { display: block; overflow: hidden; padding-bottom: .04em; }
 .line > span { display: inline-block; }
-.char { display: inline-block; will-change: transform; }
+.char { display: inline-block; }
 .section-head { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; margin-bottom: clamp(48px, 8vh, 96px); align-items: start; }
 .section-head__idx, .intro__label { font-size: 14px; color: var(--muted); font-weight: 500; }
 .section-head__title { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 7vw, 112px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; }
@@ -163,7 +167,7 @@ section { position: relative; padding: clamp(80px, 14vh, 160px) var(--gutter); }
 .work__progress span { display: block; height: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }
 
 .case { width: clamp(360px, 50vw, 860px); flex-shrink: 0; }
-.case__video { width: 100%; height: 100%; object-fit: cover; display: block; will-change: transform; }
+.case__video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .case--more .case__media { display: grid; place-items: center; background: var(--bg-2); border: 1px dashed var(--line); }
 .case--more .case__media span { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 2.6vw, 40px); text-align: center; line-height: 1.1; }
 .case--more { width: clamp(280px, 26vw, 420px); }
@@ -179,7 +183,7 @@ section { position: relative; padding: clamp(80px, 14vh, 160px) var(--gutter); }
 .case__info h3 { font-family: var(--display); font-weight: 600; font-size: clamp(18px, 1.6vw, 24px); letter-spacing: -.02em; }
 .case__info p { color: var(--muted); font-size: 14px; }
 .case__metric { font-family: var(--display); font-weight: 800; color: var(--c1); font-size: 20px; }
-.case__media::after { content: ""; position: absolute; inset: 0; background: var(--c1); transform: scaleY(0); transform-origin: bottom; transition: transform .7s var(--ease); mix-blend-mode: soft-light; pointer-events: none; }
+.case__media::after { content: ""; position: absolute; inset: 0; background: var(--c1); transform: scaleY(0); transform-origin: bottom; transition: transform .7s var(--ease); opacity: .14; pointer-events: none; }
 .case__link:hover .case__media::after { transform: scaleY(1); }
 
 /* ---------- Page transition curtain ---------- */

@@ -266,7 +266,9 @@ if (finePointer && !reduce) {
   const label = $('.cursor__label');
   const cx = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power3' });
   const cy = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power3' });
-  addEventListener('pointermove', e => { cx(e.clientX); cy(e.clientY); });
+  document.documentElement.classList.add('has-cursor');
+  addEventListener('pointermove', e => { cx(e.clientX); cy(e.clientY); cursor.classList.add('is-visible'); });
+  document.documentElement.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
   document.addEventListener('pointerover', e => {
     const labelled = e.target.closest('[data-cursor]');
     const link = e.target.closest('a, button');
