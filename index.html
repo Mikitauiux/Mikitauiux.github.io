@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mikita Yurkevich — Senior Product Designer</title>
+  <meta name="description" content="Senior Product Designer. UI/UX for iGaming & SaaS. Conversion-focused UX, complex interfaces, scalable design systems." />
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="curtain" aria-hidden="true"></div>
+  <!-- Preloader -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__top"><span>Mikita Yurkevich</span><span>Portfolio ©2026</span></div>
+    <div class="preloader__count"><span class="preloader__num">0</span>%</div>
+    <div class="preloader__bar"><span></span></div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- WebGL background -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a href="#top" class="nav__logo" data-magnetic>MY<sup>®</sup></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#impact">Impact</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="nav__status"><i></i>Open to work</span>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero__eyebrow">Senior Product Designer — UI/UX — iGaming &amp; SaaS</p>
+      <h1 class="hero__title">
+        <span class="line"><span class="split">Mikita</span></span>
+        <span class="line line--indent"><span class="split">Yurkevich</span></span>
+      </h1>
+      <div class="hero__meta">
+        <p class="hero__lead">I design products that convert. Registration, deposits, loyalty and the complex systems behind them.</p>
+        <p class="hero__loc">Based in Wroclaw, Poland<br />Working worldwide</p>
+        <a href="#work" class="hero__scroll" data-magnetic aria-label="Scroll to work">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" aria-label="Skills">
+      <div class="marquee__row"><div class="marquee__inner">
+        <span>Product Design</span><b>✦</b><span>UX Research</span><b>✦</b><span>Design Systems</span><b>✦</b><span>CRO</span><b>✦</b><span>Prototyping</span><b>✦</b>
+        <span>Product Design</span><b>✦</b><span>UX Research</span><b>✦</b><span>Design Systems</span><b>✦</b><span>CRO</span><b>✦</b><span>Prototyping</span><b>✦</b>
+      </div></div>
+      <div class="marquee__row marquee__row--alt"><div class="marquee__inner">
+        <span>Casino</span><b>●</b><span>Sportsbook</span><b>●</b><span>Payments &amp; Wallet</span><b>●</b><span>Bonus &amp; Loyalty</span><b>●</b><span>Admin Panels</span><b>●</b><span>SaaS</span><b>●</b>
+        <span>Casino</span><b>●</b><span>Sportsbook</span><b>●</b><span>Payments &amp; Wallet</span><b>●</b><span>Bonus &amp; Loyalty</span><b>●</b><span>Admin Panels</span><b>●</b><span>SaaS</span><b>●</b>
+      </div></div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro">
+      <figure class="intro__photo" data-cursor="Hi!">
+        <div class="intro__photo-frame">
+          <img src="assets/mikita.jpg" alt="Mikita Yurkevich sitting on concrete stairs" width="1031" height="1280" loading="lazy" />
+        </div>
+        <figcaption><span>Mikita Yurkevich</span><span>Product Designer</span></figcaption>
+      </figure>
+      <div class="intro__body">
+      <p class="intro__label">(About)</p>
+      <p class="intro__text split-words">5+ years turning complex iGaming and SaaS flows into interfaces people actually finish. Fewer steps, clearer choices, measurable growth. I work from data, ship with developers and build systems that scale.</p>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="impact" id="impact">
+      <div class="section-head">
+        <p class="section-head__idx">(01)</p>
+        <h2 class="section-head__title">Numbers,<br />not opinions</h2>
+      </div>
+      <div class="stats">
+        <div class="stat"><p class="stat__num" data-prefix="+" data-to="750" data-suffix="%">+750%</p><p class="stat__label">Registration conversion after redesigning the sign-up journey</p></div>
+        <div class="stat"><p class="stat__num" data-prefix="+" data-to="400" data-suffix="%">+400%</p><p class="stat__label">First deposit conversion across onboarding, wallet and deposit funnels</p></div>
+        <div class="stat"><p class="stat__num" data-prefix="+$" data-to="100" data-suffix="K">+$100K</p><p class="stat__label">Additional revenue in the first month after launch</p></div>
+        <div class="stat"><p class="stat__num" data-prefix="~" data-to="5" data-suffix=" min">~5 min</p><p class="stat__label">Key user funnel, end-to-end, after streamlining</p></div>
+      </div>
+    </section>
+
+    <!-- WORK (horizontal) -->
+    <section class="work" id="work">
+      <div class="work__track">
+        <div class="work__intro">
+          <p class="section-head__idx">(02)</p>
+          <h2 class="section-head__title">Selected<br />work</h2>
+          <p class="work__desc">Casino &amp; sportsbook products, payments, loyalty mechanics and internal tools. Most projects are under NDA — full case studies on request.</p>
+          <a class="btn" href="https://www.behance.net/mikitayurkevich" target="_blank" rel="noopener" data-magnetic>All projects on Behance ↗</a>
+        </div>
+
+        <article class="case" style="--c1:#b7a6ff;--c2:#120f24">
+          <a class="case__link" href="bookmaker.html" data-transition data-cursor="Open">
+            <div class="case__media"><div class="case__parallax">
+              <video class="case__video" src="assets/bookmaker/01.mp4" poster="assets/bookmaker/01.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="bookmaker.XYZ preview"></video>
+            </div></div>
+            <div class="case__info">
+              <span class="case__num">01</span>
+              <div><h3>bookmaker.XYZ</h3><p>Web3 casino &amp; sportsbook · Onboarding funnel · 2025</p></div>
+              <span class="case__metric">+700%</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="case" style="--c1:#ffc700;--c2:#1a1505">
+          <a class="case__link" href="caswino.html" data-transition data-cursor="Open">
+            <div class="case__media"><div class="case__parallax">
+              <video class="case__video" src="assets/caswino/01.mp4" poster="assets/caswino/01.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="Caswino preview"></video>
+            </div></div>
+            <div class="case__info">
+              <span class="case__num">02</span>
+              <div><h3>Caswino</h3><p>Crypto casino platform · Desktop, tablet, mobile · 2023</p></div>
+              <span class="case__metric">165+</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="case case--more">
+          <a class="case__link" href="https://www.behance.net/mikitayurkevich" target="_blank" rel="noopener" data-cursor="Behance">
+            <div class="case__media"><div class="case__parallax"><span>More<br />on Behance ↗</span></div></div>
+            <div class="case__info"><span class="case__num">+</span><div><h3>More work</h3><p>Full archive</p></div></div>
+          </a>
+        </article>
+      </div>
+      <div class="work__progress" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="caps">
+      <div class="section-head">
+        <p class="section-head__idx">(03)</p>
+        <h2 class="section-head__title">What I do</h2>
+      </div>
+      <ul class="caps__list">
+        <li class="cap"><span class="cap__n">01</span><h3>Conversion UX</h3><p>Registration, onboarding and deposit funnels. CRO driven by analytics and user flows.</p></li>
+        <li class="cap"><span class="cap__n">02</span><h3>Product Design</h3><p>Cross-platform casino and sportsbook products, from wireframes to polished UI and prototypes.</p></li>
+        <li class="cap"><span class="cap__n">03</span><h3>Design Systems</h3><p>Figma components, variables and responsive patterns that keep teams fast and consistent.</p></li>
+        <li class="cap"><span class="cap__n">04</span><h3>Complex Tools</h3><p>Admin panels and back-office workflows structured into clear, scalable flows.</p></li>
+      </ul>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="exp" id="experience">
+      <div class="section-head">
+        <p class="section-head__idx">(04)</p>
+        <h2 class="section-head__title">Experience</h2>
+      </div>
+      <ol class="exp__list">
+        <li class="exp__row"><span class="exp__years">2024 — 2026</span><h3>Senior Product / UI/UX Designer</h3><span class="exp__co">NDA · iGaming: Casino &amp; Sportsbook</span></li>
+        <li class="exp__row"><span class="exp__years">2023 — 2024</span><h3>UI/UX Designer</h3><span class="exp__co">VSOFT · iGaming</span></li>
+        <li class="exp__row"><span class="exp__years">2021 — 2023</span><h3>UI/UX Designer</h3><span class="exp__co">TechSolution</span></li>
+        <li class="exp__row"><span class="exp__years">2020 — Now</span><h3>Freelance UI/UX Designer</h3><span class="exp__co">Upwork · International clients</span></li>
+      </ol>
+      <div class="tools">
+        <p class="intro__label">(Tools)</p>
+        <ul><li>Figma</li><li>Jira</li><li>Photoshop</li><li>After Effects</li><li>InDesign</li><li>Sketch</li></ul>
+        <p class="intro__label">(Languages)</p>
+        <ul><li>English B1</li><li>Polish B2</li><li>Russian Native</li></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT -->
+  <footer class="contact" id="contact">
+    <p class="intro__label">(05) — Got a product that should convert better?</p>
+    <h2 class="contact__title"><span class="line"><span class="split">Let's</span></span><span class="line"><span class="split">talk</span></span></h2>
+    <a class="contact__mail" href="mailto:mikitauiux@gmail.com" data-magnetic><span>mikitauiux@gmail.com</span></a>
+    <div class="contact__bottom">
+      <ul class="contact__links">
+        <li><a href="https://www.linkedin.com/in/mikitauiux" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://www.behance.net/mikitayurkevich" target="_blank" rel="noopener">Behance ↗</a></li>
+        <li><a href="https://t.me/Burysta" target="_blank" rel="noopener">Telegram ↗</a></li>
+      </ul>
+      <p>Wroclaw · <span class="clock">--:--</span></p>
+      <p>© 2026 Mikita Yurkevich</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="gl.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
