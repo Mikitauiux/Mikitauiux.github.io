@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://mikitauiux.github.io"
-V = "5"  # bump when styles.css / main.js change so browsers drop cached copies
+V = "6"  # bump when styles.css / main.js change so browsers drop cached copies
 
 UI = {
     "en": dict(
@@ -19,7 +19,7 @@ UI = {
         contact="Contact", status="Open to work", back="← All work", case="Case", next="(Next case)",
         cursor_next="Next", contact_label="(Contact) — Got a product that should convert better?",
         talk=("Let's", "talk"), city="Wroclaw", case_study="Case study", cover="cover animation",
-        mail="Email",
+        mail="Email", figma="Open in Figma ↗",
         desc="Case study by Mikita Yurkevich, Senior Product Designer.",
     ),
     "ru": dict(
@@ -27,14 +27,14 @@ UI = {
         contact="Контакты", status="Открыт к работе", back="← Все работы", case="Кейс", next="(Следующий кейс)",
         cursor_next="Далее", contact_label="(Контакты) — Есть продукт, который должен конвертить лучше?",
         talk=("Пиши", "мне"), city="Вроцлав", case_study="Кейс", cover="анимация обложки",
-        mail="Почта",
+        mail="Почта", figma="Открыть в Figma ↗",
         desc="Кейс Микиты Юркевича, Senior Product Designer.",
     ),
 }
 
 CASES = [
     dict(
-        slug="bookmaker", idx="01", accent="#b7a6ff", year="2025", title="bookmaker.XYZ",
+        slug="bookmaker", figma="https://www.figma.com/design/nvbJLIjJWQu5SkyyD2rKoX?node-id=6-2", idx="01", accent="#b7a6ff", year="2025", title="bookmaker.XYZ",
         stats=[("+", "700", "%"), ("+", "400", "%"), ("", "4", "")],
         shots=["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"],
         en=dict(
@@ -71,7 +71,7 @@ CASES = [
         ),
     ),
     dict(
-        slug="caswino", idx="02", accent="#ffc700", year="2023", title="Caswino",
+        slug="caswino", figma="https://www.figma.com/design/nvbJLIjJWQu5SkyyD2rKoX?node-id=0-1", idx="02", accent="#ffc700", year="2023", title="Caswino",
         stats=[("", "80", "+"), ("", "85", "+"), ("", "3", "")],
         shots=["03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
         en=dict(
@@ -104,7 +104,7 @@ CASES = [
         ),
     ),
     dict(
-        slug="backoffice", idx="03", accent="#8a87ff", year="2025", title="Casino Back-office",
+        slug="backoffice", figma="https://www.figma.com/design/nvbJLIjJWQu5SkyyD2rKoX?node-id=12-2", idx="03", accent="#8a87ff", year="2025", title="Casino Back-office",
         stats=[("", "4", ""), ("", "90", "+"), ("", "6", "")],
         shots=["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"],
         en=dict(
@@ -263,6 +263,7 @@ def page(case, nxt, lang):
       <h1 class="cs-hero__title">{title_lines(case["title"])}</h1>
       <p class="cs-hero__tagline" data-fade>{e(t["tagline"])}</p>
       <p class="cs-hero__lead" data-fade>{e(t["lead"])}</p>
+      <p class="cs-hero__actions" data-fade><a class="btn" href="{e(case["figma"])}" target="_blank" rel="noopener" data-magnetic data-cursor="Figma">{e(ui["figma"])}</a></p>
       <dl class="cs-meta">
 {meta}
       </dl>
