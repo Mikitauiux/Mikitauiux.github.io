@@ -66,8 +66,10 @@
   const uRes = u('uRes'), uTime = u('uTime'), uMouse = u('uMouse'), uScroll = u('uScroll');
 
   // Render at reduced resolution: the shader is soft, so this is visually identical and much cheaper.
-  const SCALE = 0.5;
+  // Cap the buffer at ~900px wide: on large screens a fixed 0.5 scale still means millions of shader runs per frame.
+  let SCALE = 0.5;
   function resize() {
+    SCALE = Math.min(0.5, 900 / innerWidth);
     canvas.width = Math.max(1, Math.round(innerWidth * SCALE));
     canvas.height = Math.max(1, Math.round(innerHeight * SCALE));
     gl.viewport(0, 0, canvas.width, canvas.height);

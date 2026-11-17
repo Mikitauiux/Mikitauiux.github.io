@@ -187,6 +187,7 @@ if (!reduce) {
       const el = $('.stat__num', stat);
       const { prefix = '', suffix = '', to } = el.dataset;
       const n = { v: 0 };
+      el.textContent = prefix + 0 + suffix;
       gsap.timeline({ scrollTrigger: { trigger: stats, start: 'top 85%' } })
         .from(stat, { y: 60, opacity: 0, duration: 1, ease: 'expo.out' }, i * 0.1)
         .to(n, { v: +to, duration: 2, ease: 'power3.out', onUpdate: () => (el.textContent = prefix + Math.round(n.v) + suffix) }, i * 0.1);
@@ -196,9 +197,11 @@ if (!reduce) {
   // Rows: staggered reveal
   ['.cap', '.exp__row', '.tools li'].forEach(sel => {
     if (!$(sel)) return;
+    // Hide up front: hiding on enter makes already-visible rows blink and jump.
+    gsap.set(sel, { y: 50, opacity: 0 });
     ScrollTrigger.batch(sel, {
       start: 'top 90%', once: true,
-      onEnter: els => gsap.from(els, { y: 50, opacity: 0, duration: 1, stagger: 0.08, ease: 'expo.out' })
+      onEnter: els => gsap.to(els, { y: 0, opacity: 1, duration: 1, stagger: 0.08, ease: 'expo.out' })
     });
   });
 
@@ -209,6 +212,11 @@ if (!reduce) {
       scrollTrigger: { trigger: title, start: 'top 85%' }
     });
   });
+
+  // Nav switches to dark text over the lime contact footer
+  if ($('.contact')) {
+    ScrollTrigger.create({ trigger: '.contact', start: 'top 40px', end: 'bottom top', toggleClass: { targets: '.nav', className: 'nav--dark' } });
+  }
 
   // Home work: horizontal pinned scroll on desktop, simple reveals on mobile
   if ($('.work')) {
