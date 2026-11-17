@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://mikitauiux.github.io"
-V = "4"  # bump when styles.css / main.js change so browsers drop cached copies
+V = "5"  # bump when styles.css / main.js change so browsers drop cached copies
 
 UI = {
     "en": dict(
@@ -19,6 +19,7 @@ UI = {
         contact="Contact", status="Open to work", back="← All work", case="Case", next="(Next case)",
         cursor_next="Next", contact_label="(Contact) — Got a product that should convert better?",
         talk=("Let's", "talk"), city="Wroclaw", case_study="Case study", cover="cover animation",
+        mail="Email",
         desc="Case study by Mikita Yurkevich, Senior Product Designer.",
     ),
     "ru": dict(
@@ -26,6 +27,7 @@ UI = {
         contact="Контакты", status="Открыт к работе", back="← Все работы", case="Кейс", next="(Следующий кейс)",
         cursor_next="Далее", contact_label="(Контакты) — Есть продукт, который должен конвертить лучше?",
         talk=("Пиши", "мне"), city="Вроцлав", case_study="Кейс", cover="анимация обложки",
+        mail="Почта",
         desc="Кейс Микиты Юркевича, Senior Product Designer.",
     ),
 }
@@ -291,12 +293,14 @@ def page(case, nxt, lang):
   <footer class="contact" id="contact">
     <p class="intro__label">{e(ui["contact_label"])}</p>
     <h2 class="contact__title"><span class="line"><span class="split">{e(ui["talk"][0])}</span></span><span class="line"><span class="split">{e(ui["talk"][1])}</span></span></h2>
-    <a class="contact__mail" href="mailto:mikitauiux@gmail.com" data-magnetic><span>mikitauiux@gmail.com</span></a>
+    <div class="contact__cta">
+      <a class="contact__btn" href="mailto:mikitauiux@gmail.com" data-magnetic><small>{e(ui["mail"])}</small><span>mikitauiux@gmail.com</span></a>
+      <a class="contact__btn" href="https://t.me/Burysta" target="_blank" rel="noopener" data-magnetic><small>Telegram</small><span>@Burysta ↗</span></a>
+    </div>
     <div class="contact__bottom">
       <ul class="contact__links">
         <li><a href="https://www.linkedin.com/in/mikitauiux" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         <li><a href="https://www.behance.net/mikitayurkevich" target="_blank" rel="noopener">Behance ↗</a></li>
-        <li><a href="https://t.me/Burysta" target="_blank" rel="noopener">Telegram ↗</a></li>
       </ul>
       <p>{e(ui["city"])} · <span class="clock">--:--</span></p>
       <p>© 2026 Mikita Yurkevich</p>
