@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://mikitauiux.github.io"
-V = "6"  # bump when styles.css / main.js change so browsers drop cached copies
+V = "7"  # bump when styles.css / main.js change so browsers drop cached copies
 
 UI = {
     "en": dict(
@@ -19,7 +19,7 @@ UI = {
         contact="Contact", status="Open to work", back="← All work", case="Case", next="(Next case)",
         cursor_next="Next", contact_label="(Contact) — Got a product that should convert better?",
         talk=("Let's", "talk"), city="Wroclaw", case_study="Case study", cover="cover animation",
-        mail="Email", figma="Open in Figma ↗",
+        mail="Email", figma="Open in Figma ↗", cv="CV ↗",
         desc="Case study by Mikita Yurkevich, Senior Product Designer.",
     ),
     "ru": dict(
@@ -27,7 +27,7 @@ UI = {
         contact="Контакты", status="Открыт к работе", back="← Все работы", case="Кейс", next="(Следующий кейс)",
         cursor_next="Далее", contact_label="(Контакты) — Есть продукт, который должен конвертить лучше?",
         talk=("Пиши", "мне"), city="Вроцлав", case_study="Кейс", cover="анимация обложки",
-        mail="Почта", figma="Открыть в Figma ↗",
+        mail="Почта", figma="Открыть в Figma ↗", cv="Резюме ↗",
         desc="Кейс Микиты Юркевича, Senior Product Designer.",
     ),
 }
@@ -251,6 +251,7 @@ def page(case, nxt, lang):
       <a href="#contact">{e(ui["contact"])}</a>
     </nav>
     <div class="nav__right">
+      <a class="nav__cv" href="https://drive.google.com/file/d/1NTE3bZizyj5bP6LSe6BAsHyuyQnJgQY2/view?usp=sharing" target="_blank" rel="noopener">{e(ui["cv"])}</a>
       <div class="nav__lang" aria-label="Language"><a href="{en_href}" hreflang="en" lang="en" {en_cur} data-transition>EN</a><a href="{ru_href}" hreflang="ru" lang="ru" {ru_cur} data-transition>RU</a></div>
       <span class="nav__status"><i></i>{e(ui["status"])}</span>
     </div>
@@ -302,6 +303,7 @@ def page(case, nxt, lang):
       <ul class="contact__links">
         <li><a href="https://www.linkedin.com/in/mikitauiux" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         <li><a href="https://www.behance.net/mikitayurkevich" target="_blank" rel="noopener">Behance ↗</a></li>
+        <li><a href="https://drive.google.com/file/d/1NTE3bZizyj5bP6LSe6BAsHyuyQnJgQY2/view?usp=sharing" target="_blank" rel="noopener">{e(ui["cv"])}</a></li>
       </ul>
       <p>{e(ui["city"])} · <span class="clock">--:--</span></p>
       <p>© 2026 Mikita Yurkevich</p>
