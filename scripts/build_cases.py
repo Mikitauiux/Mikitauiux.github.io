@@ -101,6 +101,47 @@ CASES = [
                   "Планшетная версия 1024", "Визуальный язык: цвета и типографика"],
         ),
     ),
+    dict(
+        slug="backoffice", idx="03", accent="#8a87ff", year="2025", title="Casino Back-office",
+        stats=[("", "4", ""), ("", "90", "+"), ("", "6", "")],
+        shots=["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"],
+        en=dict(
+            tagline="Crypto casino admin panel on Strapi. Back-office UX/UI",
+            lead="A custom admin panel built on top of Strapi for a crypto casino. Operators launch bonus campaigns, moderate payouts, manage players and curate the game lobby — without asking developers. Each of the four modules was designed around one concrete job of one team.",
+            meta=[("Role", "Product Designer — UX, UI, design system"), ("Product", "Casino back-office on Strapi"),
+                  ("Users", "CRM, payments & risk, support, content"), ("Scope", "Bonus engine, payouts, players, game lobby")],
+            stat_labels=["Product modules", "Screens & states designed", "Reusable CRM building blocks"],
+            alts=["Four roles, four jobs: CRM manager, payments & risk, support and content manager",
+                  "Information architecture grouped by the team that uses it",
+                  "Flow: building a bonus campaign from reusable blocks",
+                  "Five blocks, one campaign: config, offer, trigger and segment",
+                  "A 4-step campaign wizard with a live audience estimate",
+                  "Flow: moderating a withdrawal request",
+                  "One screen to decide: wager progress, limits, GGR and history in one modal",
+                  "Player 360 for support: user list, profile, wallet and account status",
+                  "Curating the game lobby: collections, games and group icons",
+                  "Impact: 0 developer tickets to launch a bonus, 4 steps to a live campaign, 1 screen per payout decision",
+                  "Built on Strapi Design System: colour tokens, foundations and components"],
+        ),
+        ru=dict(
+            tagline="Админка крипто-казино на Strapi. UX/UI бэк-офиса",
+            lead="Кастомная админ-панель на базе Strapi для крипто-казино. Операторы запускают бонусные кампании, модерируют выплаты, управляют игроками и собирают лобби игр — без помощи разработчиков. Каждый из четырёх модулей спроектирован вокруг одной конкретной задачи одной команды.",
+            meta=[("Роль", "Product Designer — UX, UI, дизайн-система"), ("Продукт", "Бэк-офис казино на Strapi"),
+                  ("Пользователи", "CRM, платежи и риски, саппорт, контент"), ("Задачи", "Бонусный движок, выплаты, игроки, лобби игр")],
+            stat_labels=["Модуля продукта", "Экранов и состояний", "Переиспользуемых блоков CRM"],
+            alts=["Четыре роли — четыре задачи: CRM-менеджер, платежи и риски, саппорт, контент-менеджер",
+                  "Информационная архитектура сгруппирована по командам",
+                  "Сценарий: сборка бонусной кампании из готовых блоков",
+                  "Пять блоков — одна кампания: конфиг, оффер, триггер, сегмент",
+                  "Мастер создания кампании в 4 шага с живой оценкой аудитории",
+                  "Сценарий: модерация заявки на вывод",
+                  "Решение на одном экране: прогресс вейджера, лимиты, GGR и история в одном окне",
+                  "Player 360 для саппорта: список игроков, профиль, кошелёк и статус аккаунта",
+                  "Управление лобби: коллекции, добавление игр и иконки групп",
+                  "Результат: 0 тикетов разработчикам на запуск бонуса, 4 шага до кампании, 1 экран на решение по выплате",
+                  "На базе Strapi Design System: цветовые токены, основы и компоненты"],
+        ),
+    ),
 ]
 
 
@@ -116,6 +157,10 @@ def shot(case, num, alt, up):
     return (f'      <figure class="cs-shot"><img src="{base}.webp" width="{w}" height="{h}" '
             f'loading="lazy" decoding="async" alt="{e(alt)}" /></figure>')
 
+
+def title_lines(title):
+    """One masked line per word, so long titles stack instead of overflowing."""
+    return "".join(f'<span class="line"><span class="split">{html.escape(w)}</span></span>' for w in title.split())
 
 def seo_head(case, lang, title, desc, up):
     """Canonical, hreflang, icons, Open Graph and JSON-LD for one case page."""
@@ -213,7 +258,7 @@ def page(case, nxt, lang):
     <section class="cs-hero">
       <a href="index.html#work" class="cs-back" data-transition data-fade>{e(ui["back"])}</a>
       <div class="cs-hero__top" data-fade><span>({e(ui["case"])} {case["idx"]})</span><span>{case["year"]}</span></div>
-      <h1 class="cs-hero__title"><span class="line"><span class="split">{e(case["title"])}</span></span></h1>
+      <h1 class="cs-hero__title">{title_lines(case["title"])}</h1>
       <p class="cs-hero__tagline" data-fade>{e(t["tagline"])}</p>
       <p class="cs-hero__lead" data-fade>{e(t["lead"])}</p>
       <dl class="cs-meta">
@@ -237,7 +282,7 @@ def page(case, nxt, lang):
     <section class="cs-next">
       <a href="{nxt["slug"]}.html" class="cs-next__link" data-transition data-cursor="{e(ui["cursor_next"])}">
         <p class="intro__label">{e(ui["next"])}</p>
-        <h2 class="cs-next__title"><span class="line"><span class="split">{e(nxt["title"])}</span></span></h2>
+        <h2 class="cs-next__title">{title_lines(nxt["title"])}</h2>
         <p class="cs-next__tagline">{e(nxt[lang]["tagline"])} →</p>
       </a>
     </section>
@@ -274,3 +319,22 @@ for lang in ("en", "ru"):
         assert len(c["shots"]) == len(c[lang]["alts"]), (c["slug"], lang)
         (out_dir / f'{c["slug"]}.html').write_text(page(c, CASES[(i + 1) % len(CASES)], lang), encoding="utf-8")
         print("wrote", (out_dir / f'{c["slug"]}.html').relative_to(ROOT))
+
+
+def sitemap():
+    """sitemap.xml: home + every case, each with its EN/RU alternates."""
+    pairs = [("", "ru/", "1.0")] + [(f'{c["slug"]}.html', f'ru/{c["slug"]}.html', "0.8") for c in CASES]
+    out = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for en, ru, pr in pairs:
+        for loc in (en, ru):
+            out += ["  <url>", f"    <loc>{SITE}/{loc}</loc>", f"    <priority>{pr}</priority>",
+                    f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE}/{en}" />',
+                    f'    <xhtml:link rel="alternate" hreflang="ru" href="{SITE}/{ru}" />',
+                    f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/{en}" />', "  </url>"]
+    out.append("</urlset>\n")
+    (ROOT / "sitemap.xml").write_text("\n".join(out), encoding="utf-8")
+    print("wrote sitemap.xml")
+
+
+sitemap()
