@@ -38,7 +38,7 @@ def block(p):
   <link rel="alternate" hreflang="en" href="{SITE}/" />
   <link rel="alternate" hreflang="ru" href="{SITE}/ru/" />
   <link rel="alternate" hreflang="x-default" href="{SITE}/" />
-  <meta name="google-site-verification" content="p7FCl4aFB9ftGhCtMuLh3U7LVQe6HWwck-kR8G2EBNY" />
+  <meta name="google-site-verification" content="iLcSFU8Xy8FT6-aAQdXTFBvbEdouR63gOKM80MnZQSI" />
   <meta name="author" content="Mikita Yurkevich" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0a0a0b" />
