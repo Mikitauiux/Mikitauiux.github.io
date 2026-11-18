@@ -21,7 +21,7 @@ PAGES = {
         desc="Mikita Yurkevich, Senior Product Designer in Wroclaw. UI/UX for iGaming and SaaS: conversion-focused UX, complex interfaces, design systems. Case studies inside."),
     "ru/index.html": dict(lang="ru", locale="ru_RU", alt_locale="en_US", url=f"{SITE}/ru/",
         title="Микита Юркевич (Mikita Yurkevich) — Senior Product Designer, UI/UX дизайнер",
-        desc="Микита Юркевич — Senior Product / UI/UX дизайнер из Вроцлава. iGaming и SaaS: конверсионный UX, сложные интерфейсы, дизайн-системы. Кейсы bookmaker.XYZ и Caswino."),
+        desc="Микита Юркевич — Senior Product / UI/UX дизайнер из Вроцлава. iGaming и SaaS: конверсионный UX, сложные интерфейсы, дизайн-системы. Кейсы bookmaker.XYZ, Caswino, KnuckleBonz и Drive Storage."),
 }
 
 START, END = "<!-- seo -->", "<!-- /seo -->"

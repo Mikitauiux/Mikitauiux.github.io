@@ -56,4 +56,32 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://mikitauiux.github.io/ru/backoffice.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mikitauiux.github.io/backoffice.html" />
   </url>
+  <url>
+    <loc>https://mikitauiux.github.io/knucklebonz.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mikitauiux.github.io/knucklebonz.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mikitauiux.github.io/ru/knucklebonz.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mikitauiux.github.io/knucklebonz.html" />
+  </url>
+  <url>
+    <loc>https://mikitauiux.github.io/ru/knucklebonz.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mikitauiux.github.io/knucklebonz.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mikitauiux.github.io/ru/knucklebonz.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mikitauiux.github.io/knucklebonz.html" />
+  </url>
+  <url>
+    <loc>https://mikitauiux.github.io/drive-storage.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mikitauiux.github.io/drive-storage.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mikitauiux.github.io/ru/drive-storage.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mikitauiux.github.io/drive-storage.html" />
+  </url>
+  <url>
+    <loc>https://mikitauiux.github.io/ru/drive-storage.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mikitauiux.github.io/drive-storage.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mikitauiux.github.io/ru/drive-storage.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mikitauiux.github.io/drive-storage.html" />
+  </url>
 </urlset>

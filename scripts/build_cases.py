@@ -144,6 +144,78 @@ CASES = [
                   "На базе Strapi Design System: цветовые токены, основы и компоненты"],
         ),
     ),
+    dict(
+        slug="knucklebonz", idx="04", accent="#ff4a3d", year="2026", title="KnuckleBonz",
+        stats=[("", "3", ""), ("", "4", ""), ("", "25", "+")],
+        shots=["03", "04", "05", "06", "07", "08", "09", "10", "11"],
+        en=dict(
+            tagline="Rock & metal metaverse. Game UI for desktop, mobile and Telegram",
+            lead="KnuckleBonz makes collectible statues of rock and metal legends. This project turns the brand into a playable world: a 3D city where fans explore locations, dress their avatar in band merch, play music mini-games and collect 3D vinyls — plus a Telegram mini-game that brings new players in.",
+            meta=[("Role", "UI/UX Designer — game UI & flows"), ("Platforms", "Desktop · Mobile landscape · Telegram"),
+                  ("Scope", "Onboarding, map, avatar, shop, mini-games, collection, social"), ("Genre", "Music metaverse · casual games")],
+            stat_labels=["Platforms", "Mini-games designed", "Game areas & flows"],
+            alts=["Core loop: explore the city, customise the avatar, play mini-games, earn notes",
+                  "The city is the menu: a 3D map with location cards and the player profile",
+                  "Log in with the store account: one KnuckleBonz account for the shop and the game",
+                  "Avatar editor and merch shop with a live 3D preview",
+                  "Music mini-games: Can Toss, Trivia, Treasure Hunt and CrowdSurf",
+                  "Collect 3D vinyls of legendary albums",
+                  "Telegram mini-app: a quick runner that brings new players into the world",
+                  "Mobile landscape: compact side menu and touch-sized location cards",
+                  "Visual language: colours and typography"],
+        ),
+        ru=dict(
+            tagline="Рок- и метал-метавселенная. Игровой UI для десктопа, мобайла и Telegram",
+            lead="KnuckleBonz делает коллекционные статуэтки легенд рока и метала. Проект превращает бренд в игровой мир: 3D-город, где фанаты исследуют локации, одевают аватара в мерч групп, играют в музыкальные мини-игры и собирают 3D-винилы, — плюс мини-игра в Telegram, которая приводит новых игроков.",
+            meta=[("Роль", "UI/UX Designer — игровой UI и сценарии"), ("Платформы", "Десктоп · Мобайл (landscape) · Telegram"),
+                  ("Задачи", "Онбординг, карта, аватар, магазин, мини-игры, коллекция, соцфункции"), ("Жанр", "Музыкальная метавселенная · казуальные игры")],
+            stat_labels=["Платформы", "Мини-игры", "Игровых зон и сценариев"],
+            alts=["Игровой цикл: исследуй город, настрой аватара, играй в мини-игры, зарабатывай ноты",
+                  "Город — это меню: 3D-карта с карточками локаций и профиль игрока",
+                  "Вход через аккаунт магазина: один аккаунт KnuckleBonz для магазина и игры",
+                  "Редактор аватара и магазин мерча с живым 3D-превью",
+                  "Музыкальные мини-игры: Can Toss, Trivia, Treasure Hunt и CrowdSurf",
+                  "Коллекция 3D-винилов легендарных альбомов",
+                  "Мини-приложение в Telegram: быстрый раннер, который приводит новых игроков",
+                  "Мобильная landscape-версия: компактное меню и крупные карточки локаций",
+                  "Визуальный язык: цвета и типографика"],
+        ),
+    ),
+    dict(
+        slug="drive-storage", idx="05", accent="#ff3d6e", year="2026", title="Drive Storage",
+        stats=[("", "0", " PLN"), ("", "11", ""), ("", "2", "")],
+        shots=["03", "04", "05", "06", "07", "08", "09", "10"],
+        en=dict(
+            tagline="“Try for Free” landing page and explainer video storyboard",
+            lead="Drive Storage rents self-storage units in Poland. Renting storage unseen feels risky, and a visit with a salesperson feels like pressure. The “Try for Free” offer lets anyone book a free, self-guided visit to see a unit before renting. I designed the landing page that sells this offer and the explainer video that shows how it works.",
+            meta=[("Role", "UI/UX Designer — landing & motion"), ("Deliverables", "Landing page · explainer storyboard"),
+                  ("Platforms", "Desktop · Mobile"), ("Languages", "English · Polish")],
+            stat_labels=["Cost of the visit", "Scenes in the explainer", "Languages: EN & PL"],
+            alts=["Answer every doubt before it appears: no salesperson, no card, any time, access by phone",
+                  "User journey from click to gate: online booking, then a visit in person",
+                  "The landing page: promise, how it works, real product UI, guarantees, FAQ and final CTA",
+                  "“This is exactly what you’ll see”: real screens from the booking flow",
+                  "Booking flow: choose your space",
+                  "Explainer storyboard: 11 scenes, about 40 seconds, 16:9",
+                  "Mobile layouts in English and Polish",
+                  "Visual language: colours and typography"],
+        ),
+        ru=dict(
+            tagline="Лендинг «Try for Free» и сториборд видео-эксплейнера",
+            lead="Drive Storage сдаёт в аренду складские боксы в Польше. Арендовать бокс не глядя — рискованно, а визит с менеджером ощущается как давление. Оффер «Try for Free» позволяет бесплатно забронировать самостоятельный визит и увидеть бокс до аренды. Я спроектировал лендинг, который продаёт этот оффер, и видео-эксплейнер о том, как всё работает.",
+            meta=[("Роль", "UI/UX Designer — лендинг и моушн"), ("Результат", "Лендинг · сториборд эксплейнера"),
+                  ("Платформы", "Десктоп · Мобайл"), ("Языки", "Английский · Польский")],
+            stat_labels=["Стоимость визита", "Сцен в эксплейнере", "Языка: EN и PL"],
+            alts=["Снять все сомнения заранее: без менеджера, без карты, в любое время, доступ по телефону",
+                  "Путь пользователя от клика до ворот: бронь онлайн, затем визит на место",
+                  "Лендинг: обещание, как это работает, реальный UI продукта, гарантии, FAQ и финальный CTA",
+                  "«Ровно то, что вы увидите»: реальные экраны процесса бронирования",
+                  "Сценарий бронирования: выбор бокса",
+                  "Сториборд эксплейнера: 11 сцен, около 40 секунд, 16:9",
+                  "Мобильные макеты на английском и польском",
+                  "Визуальный язык: цвета и типографика"],
+        ),
+    ),
 ]
 
 
@@ -225,6 +297,8 @@ def page(case, nxt, lang):
     shots = "\n".join(shot(case, n, a, up) for n, a in zip(case["shots"], t["alts"]))
     title = f'{case["title"]} — {t["tagline"]} | Mikita Yurkevich'
     desc = f'{t["tagline"]}. {ui["desc"]}'
+    figma = (f'      <p class="cs-hero__actions" data-fade><a class="btn" href="{e(case["figma"])}" target="_blank" rel="noopener" '
+             f'data-magnetic data-cursor="Figma">{e(ui["figma"])}</a></p>\n') if case.get("figma") else ""
     return f'''<!doctype html>
 <!-- Generated by scripts/build_cases.py — edit texts there, not here. -->
 <html lang="{lang}">
@@ -264,8 +338,7 @@ def page(case, nxt, lang):
       <h1 class="cs-hero__title">{title_lines(case["title"])}</h1>
       <p class="cs-hero__tagline" data-fade>{e(t["tagline"])}</p>
       <p class="cs-hero__lead" data-fade>{e(t["lead"])}</p>
-      <p class="cs-hero__actions" data-fade><a class="btn" href="{e(case["figma"])}" target="_blank" rel="noopener" data-magnetic data-cursor="Figma">{e(ui["figma"])}</a></p>
-      <dl class="cs-meta">
+{figma}      <dl class="cs-meta">
 {meta}
       </dl>
       <div class="stats">
