@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://mikitauiux.github.io"
-V = "7"  # bump when styles.css / main.js change so browsers drop cached copies
+V = "8"  # bump when styles.css / main.js change so browsers drop cached copies
 
 UI = {
     "en": dict(
@@ -319,7 +319,10 @@ def page(case, nxt, lang):
   <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
   <header class="nav">
-    <a href="index.html" class="nav__logo" data-transition data-magnetic>MY<sup>®</sup></a>
+    <div class="nav__left">
+      <a href="index.html" class="nav__logo" data-transition data-magnetic>MY<sup>®</sup></a>
+      <span class="nav__status">{e(ui["status"])}<i aria-hidden="true"></i></span>
+    </div>
     <nav class="nav__links" aria-label="Main">
 {nav}
       <a href="#contact">{e(ui["contact"])}</a>
@@ -327,7 +330,6 @@ def page(case, nxt, lang):
     <div class="nav__right">
       <a class="nav__cv" href="https://drive.google.com/file/d/1NTE3bZizyj5bP6LSe6BAsHyuyQnJgQY2/view?usp=sharing" target="_blank" rel="noopener">{e(ui["cv"])}</a>
       <div class="nav__lang" aria-label="Language"><a href="{en_href}" hreflang="en" lang="en" {en_cur} data-transition>EN</a><a href="{ru_href}" hreflang="ru" lang="ru" {ru_cur} data-transition>RU</a></div>
-      <span class="nav__status"><i></i>{e(ui["status"])}</span>
     </div>
   </header>
 

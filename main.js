@@ -225,14 +225,28 @@ if (!reduce) {
     mm.add('(min-width: 900px)', () => {
       const track = $('.work__track');
       const distance = () => Math.max(0, track.scrollWidth - innerWidth);
+      // The card nearest the centre is full size, the others shrink a little.
+      const cards = $$('.case', track);
+      const focus = () => {
+        const mid = innerWidth / 2;
+        cards.forEach(c => {
+          const r = c.getBoundingClientRect();
+          const d = Math.min(1, Math.abs(r.left + r.width / 2 - mid) / (innerWidth * 0.6));
+          gsap.set(c, { scale: 1 - d * 0.14, opacity: 1 - d * 0.35 });
+        });
+      };
       const horizontal = gsap.to(track, {
         x: () => -distance(), ease: 'none',
         scrollTrigger: {
-          trigger: '.work', start: 'top top', end: () => '+=' + distance(),
-          pin: true, scrub: 1, invalidateOnRefresh: true,
-          onUpdate: self => gsap.set('.work__progress span', { scaleX: self.progress })
-        }
+          // 0.6px of vertical scroll per px of horizontal travel keeps the section short.
+          trigger: '.work', start: 'top top', end: () => '+=' + distance() * 0.6,
+          pin: true, scrub: 0.6, invalidateOnRefresh: true,
+          onUpdate: self => gsap.set('.work__progress span', { scaleX: self.progress }),
+          onRefresh: focus
+        },
+        onUpdate: focus
       });
+      focus();
       $$('.case').forEach(c => {
         // Cards already on screen when the pin starts reveal on vertical entry; the rest as they slide in.
         const visibleAtStart = c.offsetLeft < innerWidth * 0.85;
@@ -265,10 +279,15 @@ if (!reduce) {
 if (finePointer && !reduce) {
   const cursor = $('.cursor');
   const label = $('.cursor__label');
-  const cx = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power3' });
-  const cy = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power3' });
+  // No easing on position: the dot sits exactly under the pointer, so it never trails on slow machines.
+  let px = 0, py = 0, queued = false;
+  const place = () => { queued = false; cursor.style.transform = `translate3d(${px}px, ${py}px, 0)`; };
   document.documentElement.classList.add('has-cursor');
-  addEventListener('pointermove', e => { cx(e.clientX); cy(e.clientY); cursor.classList.add('is-visible'); });
+  addEventListener('pointermove', e => {
+    px = e.clientX; py = e.clientY;
+    if (!queued) { queued = true; requestAnimationFrame(place); }
+    cursor.classList.add('is-visible');
+  }, { passive: true });
   document.documentElement.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
   document.addEventListener('pointerover', e => {
     const labelled = e.target.closest('[data-cursor]');
@@ -288,6 +307,22 @@ if (finePointer && !reduce) {
     });
     el.addEventListener('pointerleave', () => {
       gsap.to(el, { x: 0, y: 0, duration: 1, ease: 'elastic.out(1, 0.35)', overwrite: true });
+    });
+  });
+
+  // Capability rows: the fill comes in from the edge the pointer entered and leaves through the edge it exits.
+  const SHUT_TOP = 'inset(0% 0% 100% 0%)', SHUT_BOTTOM = 'inset(100% 0% 0% 0%)';
+  $$('.cap').forEach(cap => {
+    const fill = document.createElement('span');
+    fill.className = 'cap__fill';
+    cap.prepend(fill);
+    const fromTop = e => { const r = cap.getBoundingClientRect(); return e.clientY < r.top + r.height / 2; };
+    cap.addEventListener('pointerenter', e => {
+      if (!gsap.isTweening(fill)) gsap.set(fill, { clipPath: fromTop(e) ? SHUT_TOP : SHUT_BOTTOM });
+      gsap.to(fill, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.45, ease: 'power3.out', overwrite: true });
+    });
+    cap.addEventListener('pointerleave', e => {
+      gsap.to(fill, { clipPath: fromTop(e) ? SHUT_TOP : SHUT_BOTTOM, duration: 0.45, ease: 'power3.out', overwrite: true });
     });
   });
 
