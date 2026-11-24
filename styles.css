@@ -223,6 +223,11 @@ section { position: relative; padding: clamp(80px, 14vh, 160px) var(--gutter); }
 .cs-cover { padding: 0 var(--gutter); background: var(--bg); }
 .cs-cover__frame { overflow: hidden; border-radius: 24px; transform-origin: center top; }
 .cs-cover__frame video { display: block; width: 100%; height: auto; aspect-ratio: 14 / 9; object-fit: cover; }
+.cs-story { background: var(--bg); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 56px); padding-bottom: 0; }
+.cs-story__item { padding-top: 24px; border-top: 1px solid var(--line); }
+.cs-story__label { font-family: var(--display); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--cs); margin-bottom: 16px; }
+.cs-story__item p { font-size: clamp(16px, 1.25vw, 19px); line-height: 1.55; }
+@media (max-width: 899px) { .cs-story { grid-template-columns: 1fr; } }
 .cs-shots { padding: clamp(80px, 12vh, 140px) 0 0; background: #0b0b0e; display: flex; flex-direction: column; align-items: center; }
 .cs-shot { width: 100%; max-width: 1400px; }
 .cs-shot img, .cs-shot video { display: block; width: 100%; height: auto; }

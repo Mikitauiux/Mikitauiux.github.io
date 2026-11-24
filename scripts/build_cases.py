@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://mikitauiux.github.io"
-V = "8"  # bump when styles.css / main.js change so browsers drop cached copies
+V = "9"  # bump when styles.css / main.js change so browsers drop cached copies
 
 UI = {
     "en": dict(
@@ -21,6 +21,7 @@ UI = {
         talk=("Let's", "talk"), city="Wroclaw", case_study="Case study", cover="cover animation",
         mail="Email", figma="Open in Figma ↗", cv="CV ↗",
         desc="Case study by Mikita Yurkevich, Senior Product Designer.",
+        story=["Task", "Solution", "Result"],
     ),
     "ru": dict(
         nav=[("index.html#work", "Работы"), ("index.html#impact", "Результаты"), ("index.html#experience", "Опыт")],
@@ -29,6 +30,7 @@ UI = {
         talk=("Пиши", "мне"), city="Вроцлав", case_study="Кейс", cover="анимация обложки",
         mail="Почта", figma="Открыть в Figma ↗", cv="Резюме ↗",
         desc="Кейс Микиты Юркевича, Senior Product Designer.",
+        story=["Задача", "Решение", "Результат"],
     ),
 }
 
@@ -219,6 +221,46 @@ CASES = [
 ]
 
 
+# Task -> Solution -> Result: plain-text summary under the cover, so search engines and skimming recruiters get the case without the slides.
+STORY = {
+    "bookmaker": dict(
+        en=["New players dropped off between the first visit and the first deposit: one generic onboarding for casino and sport fans, no urgency and no way back for those who left.",
+            "Segment players from the first click — casino or sport — and land each on their own lobby. Open the deposit right after sign-up with the chosen bonus pre-applied. A soft opt-in keeps the bonus for players who leave without depositing.",
+            "+700% conversion to sign-up and +400% first-time deposits. Four funnel changes shipped to production."],
+        ru=["Новые игроки отваливались между первым визитом и первым депозитом: один общий онбординг для фанатов казино и спорта, нет срочности и нет способа вернуть ушедших.",
+            "Сегментировать игрока с первого клика — казино или спорт — и вести каждого в своё лобби. Открывать депозит сразу после регистрации с уже выбранным бонусом. Мягкая подписка сохраняет бонус тем, кто ушёл без депозита.",
+            "+700% к конверсии в регистрацию и +400% к первым депозитам. Четыре изменения воронки выпущены в продакшен."]),
+    "caswino": dict(
+        en=["Make a crypto casino with thousands of games feel premium and fast: find a game in seconds, top up in a couple of taps and always see which bonuses are waiting.",
+            "A lobby with category tabs and game rails; a game page with a quick-deposit bar and split-screen mode; a multi-currency wallet for deposits, withdrawals and exchange; a player dashboard with bonuses and bet history — all on one design system.",
+            "80+ desktop and 85+ mobile screens across three breakpoints (1440 / 1024 / 375), plus prototypes of the product walkthrough and the mobile version."],
+        ru=["Сделать крипто-казино с тысячами игр премиальным и быстрым: найти игру за секунды, пополнить баланс в пару тапов и всегда видеть доступные бонусы.",
+            "Лобби с категориями и подборками игр; игровой экран с быстрым депозитом и режимом нескольких игр; мультивалютный кошелёк для депозита, вывода и обмена; личный кабинет с бонусами и историей ставок — всё на одной дизайн-системе.",
+            "80+ экранов для десктопа и 85+ для мобайла на трёх брейкпоинтах (1440 / 1024 / 375), плюс прототипы продукта и мобильной версии."]),
+    "backoffice": dict(
+        en=["Operators depended on developers for everyday work: launching bonuses, checking payouts, helping players and curating the game lobby.",
+            "A custom admin on Strapi with four modules, each built around one team's job: a bonus engine assembled from reusable blocks with a 4-step wizard, payout moderation with all the data in one modal, a Player 360 view for support and lobby curation.",
+            "0 developer tickets to launch a bonus, 4 steps to a live campaign, 1 screen per payout decision. 90+ screens and states built on the Strapi Design System."],
+        ru=["Операторы зависели от разработчиков в ежедневной работе: запуск бонусов, проверка выплат, помощь игрокам и сборка лобби игр.",
+            "Кастомная админка на Strapi из четырёх модулей, каждый вокруг задачи одной команды: бонусный движок из готовых блоков с мастером в 4 шага, модерация выплат со всеми данными в одном окне, Player 360 для саппорта и управление лобби.",
+            "0 тикетов разработчикам на запуск бонуса, 4 шага до живой кампании, 1 экран на решение по выплате. 90+ экранов и состояний на Strapi Design System."]),
+    "knucklebonz": dict(
+        en=["Turn a brand of collectible rock and metal statues into a playable world that keeps fans coming back and brings in new players.",
+            "The 3D city works as the menu. The avatar editor doubles as a merch shop. Four music mini-games earn notes that unlock 3D vinyls. One store account for the shop and the game, and a Telegram mini-game as a light entry point.",
+            "One game world on three platforms — desktop, mobile landscape and Telegram — with 4 mini-games and 25+ game areas and flows designed."],
+        ru=["Превратить бренд коллекционных статуэток рок- и метал-легенд в игровой мир, который возвращает фанатов и приводит новых игроков.",
+            "3D-город работает как меню. Редактор аватара — одновременно магазин мерча. Четыре музыкальные мини-игры дают ноты, за которые открываются 3D-винилы. Один аккаунт магазина для покупок и игры, а мини-игра в Telegram — лёгкая точка входа.",
+            "Один игровой мир на трёх платформах — десктоп, мобайл (landscape) и Telegram — 4 мини-игры и 25+ игровых зон и сценариев."]),
+    "drive-storage": dict(
+        en=["Renting storage unseen feels risky, and a visit with a salesperson feels like pressure. The “Try for Free” offer needed a page that makes a free, self-guided visit an easy yes.",
+            "The landing page answers the four questions people ask before booking: no salesperson, no card, any time, access by phone. Real product screens instead of illustrations, and an explainer video that tells the same story — book online, visit in person.",
+            "A 0 PLN, no-card visit flow in English and Polish, plus an 11-scene, ~40-second explainer storyboard for ads and social."],
+        ru=["Арендовать бокс не глядя — рискованно, а визит с менеджером ощущается как давление. Для оффера «Try for Free» нужна была страница, после которой бесплатный самостоятельный визит — простое «да».",
+            "Лендинг отвечает на четыре вопроса, которые задают перед бронью: без менеджера, без карты, в любое время, доступ по телефону. Реальные экраны продукта вместо иллюстраций и видео-эксплейнер с той же историей — бронь онлайн, визит на месте.",
+            "Бесплатный визит без карты на английском и польском, плюс сториборд эксплейнера: 11 сцен, около 40 секунд, для рекламы и соцсетей."]),
+}
+
+
 def shot(case, num, alt, up):
     e = html.escape
     folder = ROOT / "assets" / case["slug"]
@@ -295,6 +337,9 @@ def page(case, nxt, lang):
         f'<p class="stat__label">{e(l)}</p></div>'
         for (p, n, s), l in zip(case["stats"], t["stat_labels"]))
     shots = "\n".join(shot(case, n, a, up) for n, a in zip(case["shots"], t["alts"]))
+    story = "\n".join(
+        f'        <div class="cs-story__item" data-fade><h2 class="cs-story__label">{e(h)}</h2><p>{e(x)}</p></div>'
+        for h, x in zip(ui["story"], STORY[case["slug"]][lang]))
     title = f'{case["title"]} — {t["tagline"]} | Mikita Yurkevich'
     desc = f'{t["tagline"]}. {ui["desc"]}'
     figma = (f'      <p class="cs-hero__actions" data-fade><a class="btn" href="{e(case["figma"])}" target="_blank" rel="noopener" '
@@ -352,6 +397,10 @@ def page(case, nxt, lang):
       <div class="cs-cover__frame">
         <video src="{up}assets/{case["slug"]}/01.mp4" poster="{up}assets/{case["slug"]}/01.jpg" muted loop playsinline preload="auto" data-autoplay aria-label="{e(case["title"])} — {e(ui["cover"])}"></video>
       </div>
+    </section>
+
+    <section class="cs-story">
+{story}
     </section>
 
     <section class="cs-shots" aria-label="{e(ui["case_study"])}">

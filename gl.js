@@ -67,9 +67,12 @@
 
   // Render at reduced resolution: the shader is soft, so this is visually identical and much cheaper.
   // Cap the buffer at ~900px wide: on large screens a fixed 0.5 scale still means millions of shader runs per frame.
+  // Weak machines (few cores / little memory) start at a lower buffer width; slow frames lower it further.
+  const weak = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+  let maxWidth = weak ? 420 : 720;
   let SCALE = 0.5;
   function resize() {
-    SCALE = Math.min(0.5, 720 / innerWidth);
+    SCALE = Math.min(0.5, maxWidth / innerWidth);
     canvas.width = Math.max(1, Math.round(innerWidth * SCALE));
     canvas.height = Math.max(1, Math.round(innerHeight * SCALE));
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -77,6 +80,8 @@
   }
   resize();
   addEventListener('resize', resize);
+  // Restart timing after a hidden tab so the pause doesn't count as slow frames.
+  document.addEventListener('visibilitychange', () => { prev = 0; });
 
   const mouse = { x: 0.65, y: 0.6 }, target = { x: 0.65, y: 0.6 };
   addEventListener('pointermove', e => { target.x = e.clientX / innerWidth; target.y = 1 - e.clientY / innerHeight; });
@@ -99,10 +104,16 @@
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
   // The shader moves slowly, so 30fps looks the same and halves GPU work.
-  let lastDraw = 0;
+  let lastDraw = 0, interval = 32, slow = 0, prev = 0;
   function frame(now) {
     if (!running) return;
-    if (now - lastDraw >= 32) { draw(now); lastDraw = now; }
+    // If the page can't hold ~40fps, the background is stealing time from scrolling and the cursor: degrade once.
+    if (prev && interval === 32) {
+      slow = now - prev > 25 ? slow + 1 : Math.max(0, slow - 1);
+      if (slow > 45) { interval = 50; maxWidth = Math.min(maxWidth, 360); resize(); }
+    }
+    prev = now;
+    if (now - lastDraw >= interval) { draw(now); lastDraw = now; }
     if (!reduce) requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
