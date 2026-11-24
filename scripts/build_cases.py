@@ -354,9 +354,8 @@ def page(case, nxt, lang):
   <meta name="description" content="{e(desc)}" />
 {seo_head(case, lang, title, desc, up)}
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="{up}assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="{up}fonts.css?v={V}" />
   <link rel="stylesheet" href="{up}styles.css?v={V}" />
 </head>
 <body class="cs-page" style="--cs:{case["accent"]}">
@@ -395,7 +394,7 @@ def page(case, nxt, lang):
 
     <section class="cs-cover">
       <div class="cs-cover__frame">
-        <video src="{up}assets/{case["slug"]}/01.mp4" poster="{up}assets/{case["slug"]}/01.jpg" muted loop playsinline preload="auto" data-autoplay aria-label="{e(case["title"])} — {e(ui["cover"])}"></video>
+        <video src="{up}assets/{case["slug"]}/01.mp4" poster="{up}assets/{case["slug"]}/01.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="{e(case["title"])} — {e(ui["cover"])}"></video>
       </div>
     </section>
 
